@@ -7,5 +7,8 @@ public class Main {
         var okno = new JFrame();
         okno.setVisible(true);
         okno.setSize(300, 300);
+
+        var label = new JLabel("Hello world");
+        okno.add(label);
     }
 }
