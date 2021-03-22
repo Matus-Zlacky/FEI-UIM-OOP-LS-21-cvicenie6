@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 public class Main implements ActionListener {
 
+    private JPanel panel;
+
     public static void main(String[] args) {
         new Main();
     }
@@ -15,9 +17,12 @@ public class Main implements ActionListener {
         okno.setVisible(true);
         okno.setSize(300, 300);
 
+        this.panel = new JPanel();
+        okno.add(panel);
+
         var button = new JButton("Click me!");
 
-        okno.add(button);
+        panel.add(button);
 
         button.addActionListener(this);
     }
@@ -25,5 +30,7 @@ public class Main implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("hello");
+        this.panel.removeAll();
+        this.panel.repaint();
     }
 }
