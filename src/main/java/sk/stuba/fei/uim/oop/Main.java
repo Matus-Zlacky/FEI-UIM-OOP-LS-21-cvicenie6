@@ -1,12 +1,12 @@
 package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
-public class Main implements ActionListener {
+public class Main implements GameLostListener {
 
-    private JPanel panel;
+    private JLabel lost;
+    private JPanel board;
 
     public static void main(String[] args) {
         new Main();
@@ -17,20 +17,26 @@ public class Main implements ActionListener {
         okno.setVisible(true);
         okno.setSize(300, 300);
 
-        this.panel = new JPanel();
-        okno.add(panel);
+        okno.setLayout(new BorderLayout());
 
-        var button = new JButton("Click me!");
+        this.board = new JPanel();
+        this.board.setLayout(new GridLayout(9, 9));
 
-        panel.add(button);
+        okno.add(board, BorderLayout.CENTER);
 
-        button.addActionListener(this);
+        for (int i = 0; i < 81; i++) {
+            var tile = new Tile();
+            tile.addGameLostListener(this);
+            this.board.add(tile);
+        }
+
+        this.lost = new JLabel("You lost!");
+        this.lost.setVisible(false);
+        okno.add(lost, BorderLayout.PAGE_START);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("hello");
-        this.panel.removeAll();
-        this.panel.repaint();
+    public void gameLost() {
+        this.lost.setVisible(true);
     }
 }
