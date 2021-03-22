@@ -16,6 +16,7 @@ public class Main implements GameLostListener {
         var okno = new JFrame();
         okno.setVisible(true);
         okno.setSize(300, 300);
+        okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         okno.setLayout(new BorderLayout());
 
