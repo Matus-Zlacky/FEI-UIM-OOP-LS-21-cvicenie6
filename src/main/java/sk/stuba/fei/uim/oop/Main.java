@@ -18,8 +18,18 @@ public class Main {
         var label = new JLabel("Hello world");
         panel.add(label);
 
+        var panel2 = new JPanel();
+        panel2.setLayout(new GridLayout(2, 2));
+        for (int i = 0; i < 4; i++) {
+            panel2.add(new JLabel("p" + i));
+        }
+
         for (int i = 0; i < 12; i++) {
-            panel.add(new JLabel("" + i));
+            if (i == 8) {
+                panel.add(panel2);
+            } else {
+                panel.add(new JLabel("" + i));
+            }
         }
     }
 }
