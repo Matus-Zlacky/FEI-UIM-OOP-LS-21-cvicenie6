@@ -2,42 +2,79 @@ package sk.stuba.fei.uim.oop;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;        //reagovat na eventy
 
-public class Main implements GameLostListener {
+public class Main {
 
-    private JLabel lost;
-    private JPanel board;
+    public static void main (String[] args) {
+        JFrame f = new JFrame();
+        f.add(new TestCanvasKey());
+        f.setSize(300,300);
+        f.setVisible(true);
 
-    public static void main(String[] args) {
-        new Main();
-    }
 
-    public Main() {
+
+
+        /*
+
+        //MyFrame f = new MyFrame("stvorce");
+        JFrame f = new JFrame();
+        f.setSize(300,300);
+        f.setVisible(true);
+        f.addWindowListener(new WindowCloser()
+                {
+                    public void WindowClosing(){        //zavretie pomocou X na okne
+                        System.exit(0);
+                    }
+                });
+
+
+        new TestFrame("Moja appka");        //uzavretie/vytvorenie noveho frameu pomocou tlacidla
+
+
         var okno = new JFrame();
-        okno.setVisible(true);
         okno.setSize(300, 300);
-        okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        okno.setLayout(new BorderLayout());
+        JPanel p = new JPanel();
+        MyButton b = new MyButton("OK");
+            JButton b2 = new JButton("nie som actionListener"); //ked kliknem nestane sa nic
+            b2.addActionListener(b);        //ked kliknem spravi to iste co tlacidlo 'b' len s inym vypisom
 
-        this.board = new JPanel();
-        this.board.setLayout(new GridLayout(9, 9));
+        p.add(b);
+        p.add(b2);
+        okno.add(p);
 
-        okno.add(board, BorderLayout.CENTER);
 
-        for (int i = 0; i < 81; i++) {
-            var tile = new Tile();
-            tile.addGameLostListener(this);
-            this.board.add(tile);
-        }
 
-        this.lost = new JLabel("You lost!");
-        this.lost.setVisible(false);
-        okno.add(lost, BorderLayout.PAGE_START);
+        JPanel p = new JPanel();                //zaciatok actionListener
+        JButton b = new JButton("OK");
+        b.addActionListener(new ButtonPrinter());
+
+        p.add(b);
+        okno.add(p);
+
+
+        okno.setLayout(new BorderLayout());     //sever, juh, vychod, zapad
+        okno.add("Center", new Canvas1());
+
+        JPanel p = new JPanel();
+        p.add(new JButton("change"));
+        p.add(new JButton("closed"));
+
+        okno.add("South", p);
+
+
+        okno.setLayout(new GridLayout(0,2));    //pocet riadkov a stlpcov
+        okno.add(new JLabel("ahoj"));
+        okno.add(new JLabel("dovi"));
+        okno.add(new JLabel("nazdar"));
+        okno.pack();  //da to do najmensieho "pekneho" tvaru
+
+
+        okno.setVisible(true);          //treba aby bolo vidno okno !
+
+ */
     }
 
-    @Override
-    public void gameLost() {
-        this.lost.setVisible(true);
-    }
+
 }
